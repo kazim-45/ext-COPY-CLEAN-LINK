@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copy Clean Link</title>
+  <link rel="stylesheet" href="../src/ui.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="../icons/icon-32.png" width="24" height="24" alt="">
+    <h1>Copy Clean Link</h1>
+    <a href="#" id="open-options" class="settings-link">Settings</a>
+  </header>
+
+  <main>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <section id="diff" hidden>
+      <div class="field">
+        <div class="field-label">Before</div>
+        <div id="before" class="url"></div>
+      </div>
+      <div class="field">
+        <div class="field-label">After</div>
+        <div id="after" class="url"></div>
+      </div>
+      <div id="chips" class="chips" aria-label="Removed parameters"></div>
+      <ul id="notes" class="notes"></ul>
+    </section>
+
+    <button id="copy" class="btn primary" type="button" disabled>Copy clean link</button>
+
+    <section class="toggles">
+      <label class="switch">
+        <input type="checkbox" id="t-auto">
+        <span class="track"></span>
+        <span class="label">Strip trackers as I browse
+          <small id="auto-hint">Cleans links the moment you open them. Needs site access.</small></span>
+      </label>
+      <label class="switch" id="pause-row" hidden>
+        <input type="checkbox" id="t-pause">
+        <span class="track"></span>
+        <span class="label">Pause on <b id="pause-host"></b></span>
+      </label>
+    </section>
+  </main>
+
+  <footer>
+    <span id="stats"></span>
+    <span class="local">Local only · no network</span>
+  </footer>
+
+  <script src="../src/compat.js"></script>
+  <script src="../src/cleaner.js"></script>
+  <script src="../src/clipboard.js"></script>
+  <script src="../src/settings.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

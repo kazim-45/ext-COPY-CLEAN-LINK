@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#0b6b66"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#g)"/>
+  <!-- chain link, two interlocked rounded bars -->
+  <g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" transform="rotate(-45 64 64)">
+    <rect x="20" y="46" width="52" height="36" rx="18"/>
+    <rect x="56" y="46" width="52" height="36" rx="18"/>
+  </g>
+  <!-- sparkle = clean -->
+  <path d="M100 14 L104 26 L116 30 L104 34 L100 46 L96 34 L84 30 L96 26 Z" fill="#fde68a"/>
+</svg>

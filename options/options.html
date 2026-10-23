@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copy Clean Link - Settings</title>
+  <link rel="stylesheet" href="../src/ui.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <img src="../icons/icon-48.png" width="40" height="40" alt="">
+      <div>
+        <h1>Copy Clean Link</h1>
+        <p class="sub">Everything runs on your device. No network requests, no analytics, nothing synced.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Automatic protection</h2>
+      <p class="desc">These two features need permission to run on websites. They're off until you turn them on, and you can take the permission back any time.</p>
+
+      <label class="switch">
+        <input type="checkbox" id="autoStrip">
+        <span class="track"></span>
+        <span class="label">Strip trackers from links as I browse
+          <small>Open a link with <code>?fbclid=…</code> and you land on the clean address instead. Top-level page loads only.</small></span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="cleanOnCopy">
+        <span class="track"></span>
+        <span class="label">Clean links when I copy them (Ctrl/Cmd+C)
+          <small>Only when your whole selection is a bare URL. Normal text and rich content are never touched.</small></span>
+      </label>
+
+      <div class="perm">
+        <span id="perm-state" class="pill"></span>
+        <button id="perm-revoke" class="btn small danger" type="button" hidden>Revoke site access</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Behavior</h2>
+      <label class="switch">
+        <input type="checkbox" id="autoCopyOnOpen">
+        <span class="track"></span>
+        <span class="label">Copy automatically when I click the toolbar icon
+          <small>One click = clean link on your clipboard. Turn off to copy only when you press the button.</small></span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="stripFragment">
+        <span class="track"></span>
+        <span class="label">Also remove the <code>#fragment</code>
+          <small>Off by default: fragments are often in-page anchors or app routes, and removing them can break the link.</small></span>
+      </label>
+      <p class="desc">
+        Keyboard shortcut (default <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>) and right-click menu entries
+        <i>Copy clean link address</i> / <i>Copy clean page URL</i> work with no extra permissions.
+        <a href="#" id="open-shortcuts">Change shortcut</a>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Your own parameters</h2>
+      <p class="desc">One per line (or comma separated). A trailing <code>*</code> matches a prefix, e.g. <code>campaign_*</code>. Case-insensitive when copying. Automatic stripping uses exact, lowercase names only.</p>
+      <textarea id="customParams" rows="5" spellcheck="false" autocomplete="off" placeholder="ref_code&#10;partner_*"></textarea>
+      <div class="row"><span id="custom-saved" class="saved" aria-live="polite"></span></div>
+    </section>
+
+    <section class="card">
+      <h2>Paused sites</h2>
+      <p class="desc">Automatic stripping is skipped on these sites. Add one here or use the toggle in the toolbar popup.</p>
+      <ul id="paused" class="paused"></ul>
+      <form id="pause-form" class="row" autocomplete="off">
+        <input type="text" id="pause-input" placeholder="example.com" aria-label="Site to pause" spellcheck="false">
+        <button class="btn small" type="submit">Pause site</button>
+      </form>
+      <p id="pause-error" class="error" role="alert"></p>
+    </section>
+
+    <section class="card">
+      <h2>Try it</h2>
+      <p class="desc">Paste a URL to see exactly what would be removed. Nothing leaves this page.</p>
+      <input type="text" id="tester" placeholder="https://example.com/page?utm_source=news&amp;fbclid=…" aria-label="URL to test" spellcheck="false">
+      <div id="test-out" class="test-out" hidden>
+        <div class="url" id="test-after"></div>
+        <div id="test-chips" class="chips"></div>
+        <ul id="test-notes" class="notes"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Stats</h2>
+      <p id="stats" class="desc"></p>
+      <button id="reset-stats" class="btn small" type="button">Reset counters</button>
+    </section>
+
+    <footer>
+      <p>Copy Clean Link never reads page content except to act on the text you copy (when enabled), never contacts a server, and stores settings only in this browser profile.</p>
+    </footer>
+  </div>
+
+  <script src="../src/compat.js"></script>
+  <script src="../src/cleaner.js"></script>
+  <script src="../src/settings.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

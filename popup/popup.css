@@ -1,0 +1,21 @@
+body { width: 380px; }
+header { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+header h1 { font-size: 14px; font-weight: 700; flex: 1; }
+.settings-link { font-size: 12px; text-decoration: none; color: var(--muted); }
+.settings-link:hover { color: var(--accent); text-decoration: underline; }
+
+main { padding: 12px 14px; display: grid; gap: 12px; }
+.status { padding: 8px 10px; border-radius: 8px; font-weight: 600; background: var(--accent-soft); }
+.status.good { background: var(--good-soft); color: var(--good); }
+.status.bad { background: var(--bad-soft); color: var(--bad); }
+.status.neutral { background: var(--line); color: var(--text); }
+
+section[hidden], label[hidden] { display: none; }
+#diff { display: grid; gap: 8px; }
+.field { display: grid; gap: 3px; }
+.field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+#before, #after { max-height: 84px; overflow: auto; }
+
+.toggles { display: grid; gap: 10px; padding-top: 4px; border-top: 1px solid var(--line); padding-top: 12px; }
+
+footer { display: flex; justify-content: space-between; padding: 8px 14px 10px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--line); }

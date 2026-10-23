@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Copy Clean Link",
+  "version": "1.0.0",
+  "description": "Copy any link without trackers: strips utm_*, fbclid, gclid & co, unwraps redirect links. Local only, zero network requests.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Copy clean link",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "storage",
+    "offscreen",
+    "clipboardWrite",
+    "scripting",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "optional_host_permissions": ["<all_urls>"],
+  "commands": {
+    "copy-clean-link": {
+      "suggested_key": { "default": "Alt+Shift+C" },
+      "description": "Copy a clean version of this page's URL"
+    }
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "tracking", "enabled": false, "path": "rules/tracking.json" }
+    ]
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'"
+  }
+}
