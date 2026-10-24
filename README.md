@@ -9,7 +9,6 @@ One click (or `Alt+Shift+C`) copies the current page's URL **without trackers**.
 Use `copy-clean-link-firefox.zip` (or the `dist/firefox` folder).
 
 * **Try it now (temporary):** open `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on...** and pick the zip (or `manifest.json` inside the unzipped folder). It stays until you restart Firefox.
-* **Permanent:** Firefox release builds only keep *signed* add-ons. Upload the zip at <https://addons.mozilla.org/developers/> as **"On your own"** (unlisted); signing is free and takes minutes. Install the signed `.xpi` you get back. Alternatively, Firefox Developer Edition / Nightly / ESR let you set `xpinstall.signatures.required` to `false` in `about:config` and install the unsigned zip.
 * **Site access:** Firefox may show "Access your data for all websites" as an *optional* permission at install. Leave it off unless you want auto-strip / copy-cleaning. You can grant or revoke it later in `about:addons` → Copy Clean Link → Permissions, or from the extension's own toggles.
 * **Shortcut:** `Alt+Shift+C`. Change it from `about:addons` → gear icon → *Manage Extension Shortcuts*.
 
