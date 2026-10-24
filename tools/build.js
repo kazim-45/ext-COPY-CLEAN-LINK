@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-/* Builds store-ready packages from the shared source:
- *   dist/chrome/   + copy-clean-link-chrome.zip    (Chrome, Edge, Brave, any Chromium 116+)
- *   dist/firefox/  + copy-clean-link-firefox.zip   (Firefox 128+; zip is also a valid .xpi)
- * The repo root manifest.json is the Chromium manifest; the Firefox one is derived from it.
- */
+
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -43,15 +39,13 @@ emit('chrome', [...COMMON, ...CHROME_ONLY], base);
 const ff = JSON.parse(JSON.stringify(base));
 delete ff.minimum_chrome_version;
 ff.permissions = ff.permissions.filter((p) => p !== 'offscreen');
-// Event page instead of a service worker (Firefox MV3 has no service-worker background).
 ff.background = { scripts: ['src/compat.js', 'src/cleaner.js', 'src/settings.js', 'src/clipboard.js', 'src/background.js'] };
-// In Firefox MV3, host_permissions are user-controlled: not granted unless the user opts in,
-// and requestable later through permissions.request().
+
 ff.host_permissions = ff.optional_host_permissions;
 delete ff.optional_host_permissions;
 ff.browser_specific_settings = {
   gecko: {
-    id: 'copy-clean-link@local.addon',
+    id: 'copy-clean-link@kazim-45.github.io',
     strict_min_version: '128.0',
     data_collection_permissions: { required: ['none'] }
   }
